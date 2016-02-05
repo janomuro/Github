@@ -1,0 +1,16 @@
+def postup(i):
+	tri = "foo"
+	pat = "bar"
+	while i < 101:
+		print i
+		i = i + 1
+		if i % 3.0 == 0 and i % 5.00 == 0:
+			print i, tri+pat
+		elif i % 3.0 == 0:
+			print i, tri
+	
+		elif i % 5.0 == 0:
+			print i, pat
+
+
+print postup(1)
