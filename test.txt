@@ -1,0 +1,10 @@
+test#sh run | inc dead action reinitialize vlan
+authentication event server dead action reinitialize vlan 1
+authentication event server dead action reinitialize vlan 2
+authentication event server dead action reinitialize vlan 1
+authentication event server dead action reinitialize vlan 3
+authentication event server dead action reinitialize vlan 1
+authentication event server dead action reinitialize vlan 3
+authentication event server dead action reinitialize vlan 1
+authentication event server dead action reinitialize vlan 1
+test
