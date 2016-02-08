@@ -1,0 +1,41 @@
+#otvorenie jedneho subora
+input = open("C:\\Users\\janomuro\\Desktop\\Scripting\\files\\test.txt").readlines()
+#print input
+
+#otvorenie vsetkych suborov v adresari
+import os
+path = 'C:\\Users\\janomuro\\Desktop\\Scripting\\files\\'
+for filename in os.listdir(path):
+	print filename
+	files = open(filename).readlines()
+	
+
+
+#vytiahnutie z kazdeho riadka posledne slovo a zapise ho do pola
+def PS(vstup):
+	i = 1						#nulty riadok neobsahuje cislo vlan
+	pr = len(vstup) - 1			#pocet riadkov, prvy riadok nepocitam
+	VLAN = []
+	while i < pr: 				#< preto, ze ani posledny riadok neobsahuje cislo vlan
+		riadok = vstup[i]		#zoberie hodnotu z pozicie i pola "vstup"
+		slova = riadok.split(' ') #rozdeli jedno pole na slova
+		PS = int(slova.pop(-1)) #vysledok je cele cislo na poslednej pozicii(posledne slovo)
+		VLAN.append(PS)			#vysledne cislo pridam do pola VLAN
+		i = i + 1
+	return VLAN
+	
+#print PS(input)
+
+#toto pre kazdy hodnotu < ako 4096 zobrazi "count", cize kolkokrat sa v poli definovanom vo funkcii PS nachadza
+# pomocou cyklu vypisujem len nenulove hodnoty a pridavam info o cislo VLAN o ktorej hovorim
+def VLAN_count(vstup):
+	hodnoty = PS(vstup)	#ako vstup sluzi vysledok PS
+	VLAN = 1
+	while VLAN < 4096:	#cyklus pre vsetky hodnoty, ktore moze VLAN mat
+		if hodnoty.count(VLAN) != 0:	#ak sa nejaka VLAN vyskytla v poli PS (bola teda vo vypise switcha)
+			print "VLAN", VLAN, "\t", hodnoty.count(VLAN) # vypis VLAN, jej cislo a kolkokrat sa vyskytla
+			VLAN = VLAN + 1
+		else:			#inak sa zacykli v prvej casti
+			return 0
+			
+#VLAN_count(input)
