@@ -1,15 +1,19 @@
-def postup(i):
-	tri = "foo"
-	pat = "bar"
-	while i < 101:
-		if i % 3.0 == 0 and i % 5.00 == 0:
-			print i, tri + pat
-		elif i % 3.0 == 0:
-			print i, tri
-		elif i % 5.0 == 0:
-			print i, pat
-		else:
-			print i
-		i = i + 1
 
-postup(1)
+def postup():
+ 	#tri = "foo"
+ 	#pat = "bar"
+	i = 1
+	p = []
+ 	while i < 101:
+ 		if i % 3.0 == 0 and i % 5.00 == 0:
+ 			p.append("foobar")
+ 		elif i % 3.0 == 0:
+ 			p.append("foo")
+ 		elif i % 5.0 == 0:
+ 			p.append("bar")
+ 		else:
+ 			p.append(i)
+ 		i = i + 1
+	return p
+
+print postup()
