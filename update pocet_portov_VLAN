@@ -1,0 +1,54 @@
+#program pre spocitanie portov vo vlan ako vstup sluzi vypis zo switchov sh run | inc authorize vlan
+
+#otvorenie vsetkych suborov v adresari
+import os
+path = 'C:\Users\jan.murin\Desktop\Scripting\Status' #cesta kde su subory ulozene
+
+vypis = []
+for filename in os.listdir(path):
+	#print filename		#vypise len mena suborov v adresari "path"
+	directory = os.path.join(path, filename)	#definicia adresaru
+	#print directory		#vypise celu cestu s menom suborov v adresari "path"
+	subory = open(directory).readlines()		#precitanie subora v adresari "directory"
+	vypis.append(subory)						#vysledny riadky subora (pole) zapise do pola vypis
+
+#print vypis
+
+vysledok = []
+for s in vypis:				#vytiahne z vypisu jednotlive subory
+	for l in s[1:-1]:		# z kazdeho subora zoberie riadky v definovanom rozsahu
+		vysledok.append(l)	# vysledne riadky vlozi do pola vysledok
+		
+#print vysledok
+#print len(vysledok)
+
+# funkcia na vypisanie posledneho slova v riadku 
+def PS(vstup):
+	i = 0	#uz pri zapisovani do pola vysledok odstrihavam prvy a posledny riadok z kazdeho subora
+	pr = len(vstup)
+	VLAN = []
+	while i < pr: 	#< pr preto, ze aj posledny riadok uz neobsahuje VLAN cislo
+		riadok = vstup[i]		#zoberie premennu-pole "vstup" poziciu i
+		slova = riadok.split(' ') # rozdeli hodnotu (riadok) v [i] na slova
+		PS = int(slova.pop(-1)) # vysledok je cele cislo na poslednej pozicii(slovo), (odstrihnem \n)
+		VLAN.append(PS)			# vysledne cislo vlozi do pola VLAN
+		#print riadok
+		i = i + 1
+	return VLAN					# pole bude obsahovat cisla VLAN na switchi
+	
+
+#print PS(vysledok)
+
+
+def VLAN_count(vstup):
+ 	hodnoty = PS(vstup)	#ako vstup sluzi vysledok PS
+ 	VLAN = 1
+ 	while VLAN < 4096:	#cyklus pre vsetky hodnoty, ktore moze VLAN mat
+ 		if hodnoty.count(VLAN) != 0:	#ak sa nejaka VLAN vyskytla v poli PS (bola teda vo vypise switcha)
+ 			print "VLAN", VLAN, "\t", hodnoty.count(VLAN) # vypis VLAN, jej cislo a kolkokrat sa vyskytla
+ 			pass
+		else:			#inak sa zacykli v prvej casti
+			pass
+		VLAN += 1			
+ 
+VLAN_count(vysledok)
