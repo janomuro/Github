@@ -1,0 +1,38 @@
+#POZOR ABY ZDROJOVY FOLDER OBSAHOVAL LEN POTREBNE FILES
+#program pre vypisanie mena switcha kde sa nachadza definovana VLAN a kolkokrat tam VLAN je
+#vstupny format suborov je vypis: !!!show int status!!!!
+
+#otvorenie vsetkych suborov v adresari
+import os
+path = 'C:\Program Files (x86)\CatTools3\Captured Data\Volkswagen\InterfaceStatus\West' #cesta kde su subory ulozene
+
+vypis = [] #sem ulozime obsah suborov, kazdy subor pole, hodnoty tychto poli su riadky
+for filename in os.listdir(path):
+	#print filename		#vypise len mena suborov v adresari "path"
+	directory = os.path.join(path, filename)	#definicia adresaru
+	#print directory		#vypise celu cestu s menom suborov v adresari "path"
+	subory = open(directory).readlines()		#precitanie subora v adresari "directory"
+	vypis.append(subory)						#vysledny riadky subora (pole) zapise do pola vypis
+
+#print vypis
+
+PRINTER_VLAN_1 = '586'	#toto je cislo VLAN, ktore chceme najst
+PRINTER_VLAN_2 = '587'	#ked su 2
+
+for subor in vypis:
+	POCET_PR = 0	#pre kazdy subor zacinam ratat pocet VLAN od 0, pocetnost je dokopy pre vsetky VLAN
+	riadky = []		#pre kazdy subor bude toto pole na zaciatku prazdne
+	for f in subor:	#f su vlastne samostatne riadky
+		slova = f.split(' ')	#rozdelime na slova
+		riadky.append(slova)	#slova budeme pridavat do pola riadky
+	for r in riadky: #r je vzdy 1 riadok, ale uz rozdeleny na pole so slovami
+		for s in r:	 #s su jednotlive slova
+			if s == PRINTER_VLAN_1 or s == PRINTER_VLAN_2:	# ak sa slovo zhoduje s vyhladavanou VLAN (pripadne viacerymi)
+				POCET_PR += 1		#pripocitaj 1 (pre kazdy subor ratam od 0)
+			else:
+				pass		#inak nerob nic
+	if POCET_PR != 0:	#ak pre dany subor plati, ze tam je hladana VLAN aspon raz
+		print "SWITCH %r \nPRINTER VLAN # %s or %s \t %d \n" % (subor[-1],
+		PRINTER_VLAN_1, PRINTER_VLAN_2, POCET_PR)
+	else:
+		pass
