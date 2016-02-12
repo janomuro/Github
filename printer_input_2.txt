@@ -1,0 +1,31 @@
+sh int status
+
+Port      Name               Status       Vlan       Duplex  Speed Type
+Fa0/1     11.2.'11 A11-614 I notconnect   51           auto   auto 10/100BaseTX
+Fa0/3     A11-615_18.3.15_IM connected    51         a-full  a-100 10/100BaseTX
+Fa0/4     A11-415_18_1_'16_I notconnect   51           auto   auto 10/100BaseTX
+Fa0/5     a11-506            notconnect   51           auto   auto 10/100BaseTX
+Fa0/6     A11-605_26_1_'16_I connected    51         a-full  a-100 10/100BaseTX
+Fa0/7                        connected    49         a-full   a-10 10/100BaseTX
+Fa0/8                        connected    51         a-full  a-100 10/100BaseTX
+Fa0/9     A11-416_08.10'15_I notconnect   51           auto   auto 10/100BaseTX
+Fa0/10    A11-415_08.10'15_I notconnect   51           auto   auto 10/100BaseTX
+Fa0/32    22.6'11_IM250171_A notconnect   51           auto   auto 10/100BaseTX
+Fa0/33    A11-408_9.8'11_IM2 connected    51         a-full  a-100 10/100BaseTX
+Fa0/34    A11-401-14.3'12_IM notconnect   51           auto   auto 10/100BaseTX
+Fa0/36    A11-501_2.4.15_IMA connected    49         a-full  a-100 10/100BaseTX
+Fa0/37    A11-113_12.2.2013_ connected    51         a-full  a-100 10/100BaseTX
+Fa0/38    A11-114_12.2.2013_ connected    51         a-full  a-100 10/100BaseTX
+Fa0/39    A11-202_21_1_'16   notconnect   51           auto   auto 10/100BaseTX
+Fa0/40    A11-115_12.2.2013_ connected    51         a-full  a-100 10/100BaseTX
+Fa0/41    a11-ups            connected    8          a-half  a-100 10/100BaseTX
+Fa0/42    A11-619_9.12'13_IM notconnect   51           auto   auto 10/100BaseTX
+Fa0/43    A11-201_13.08.14   connected    51         a-full   a-10 10/100BaseTX
+Fa0/44    A11-116_12.2.2013_ notconnect   51           auto   auto 10/100BaseTX
+Fa0/45    A11-413_23.7.05_IM notconnect   49           auto   auto 10/100BaseTX
+Fa0/46    A11-606_23.1.15_IM notconnect   51           auto   auto 10/100BaseTX
+Fa0/47    h11-intf03-ia11    connected    251        a-full  a-100 10/100BaseTX
+Fa0/48    a11-c2960ap        disabled     1            full    100 10/100BaseTX
+Gi0/1     a34-c6509e         connected    trunk        full    100 100BaseFX SFP
+Gi0/2     a22-c6509e         connected    trunk        full    100 100BaseFX SFP
+test#
