@@ -5,39 +5,32 @@ import os
 path = 'C:\Users\jan.murin\Desktop\Scripting\Status' #cesta kde su subory ulozene
 
 vypis = []
-for filename in os.listdir(path):
-	#print filename		#vypise len mena suborov v adresari "path"
-	directory = os.path.join(path, filename)	#definicia adresaru
-	#print directory		#vypise celu cestu s menom suborov v adresari "path"
-	subory = open(directory).readlines()		#precitanie subora v adresari "directory"
-	vypis.append(subory)						#vysledny riadky subora (pole) zapise do pola vypis
+for filename in os.listdir(directory):
+	#print filename		#vypise len mena suborov v adresari "directory"
+	path = os.path.join(directory, filename)	#definicia adresaru
+	#print path		#vypise celu cestu s menom suborov v adresari "path"
+	lines = open(path).readlines()		#precitanie subora v adresari "directory"
+	vypis.extend(lines[1:-1])			#vysledny riadky subora (pole) zapise do pola vypis
 
 #print vypis
 
-vysledok = []
-for s in vypis:				#vytiahne z vypisu jednotlive subory
-	for l in s[1:-1]:		# z kazdeho subora zoberie riadky v definovanom rozsahu
-		vysledok.append(l)	# vysledne riadky vlozi do pola vysledok
-		
-#print vysledok
-#print len(vysledok)
 
-# funkcia na vypisanie posledneho slova v riadku 
+# funkcia vrati posledne slovo v riadku 
 def PS(vstup):
 	i = 0	#uz pri zapisovani do pola vysledok odstrihavam prvy a posledny riadok z kazdeho subora
 	pr = len(vstup)
-	VLAN = []
-	while i < pr: 	#< pr preto, ze aj posledny riadok uz neobsahuje VLAN cislo
+	vlans = []
+	while i < pr: 	
 		riadok = vstup[i]		#zoberie premennu-pole "vstup" poziciu i
 		slova = riadok.split(' ') # rozdeli hodnotu (riadok) v [i] na slova
-		PS = int(slova.pop(-1)) # vysledok je cele cislo na poslednej pozicii(slovo), (odstrihnem \n)
+		PS = int(slova[-1]) # vysledok je cele cislo na poslednej pozicii(slovo), (odstrihnem \n)
 		VLAN.append(PS)			# vysledne cislo vlozi do pola VLAN
 		#print riadok
 		i = i + 1
-	return VLAN					# pole bude obsahovat cisla VLAN na switchi
+	return vlans					# pole bude obsahovat cisla VLAN na switchi
 	
 
-#print PS(vysledok)
+#print PS(vystup)
 
 
 def VLAN_count(vstup):
@@ -51,4 +44,4 @@ def VLAN_count(vstup):
 			pass
 		VLAN += 1			
  
-VLAN_count(vysledok)
+VLAN_count(vystup)
