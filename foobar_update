@@ -1,0 +1,18 @@
+def postup():
+	i = 1
+	p = []
+ 	while i < 101:
+ 		if i % 13.0 == 0:
+ 			p.append("trinast")
+ 		elif i % 11.0 == 0:
+ 			p.append("jedenast")
+ 		elif i % 7.0 == 0:
+ 			p.append("sedem")
+	 	elif i % 3.0 == 0:
+ 			p.append("tri")		
+ 		else:
+ 			p.append(i)
+ 		i = i + 1
+	return p
+
+print postup()
