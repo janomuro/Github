@@ -1,24 +1,23 @@
 def postup():
-	vystup = []
-	i = 1
- 	while i < 15:			
+	vystup = ['1']
+ 	for i in range(1, 50):			
 		delitelnost(i, vystup)
-		
-		print "i", i
-		print "dlzka vystup", len(vystup)
 		if len(vystup) < i:
 			vystup.append(i)
 
- 		i = i + 1
 	return vystup
 
 	
 def delitelnost(x, p):
+	vypis = []
 	vstup = [3, 7, 11, 13]
 	slovo = ['tri', 'sedem', 'jedenast', 'trinast']
 	for n in range(len(vstup)):	
 		if x % vstup[n] == 0:
-			p.append(slovo[n])
+			vypis.append(slovo[n])
+	
+	if len(vypis) > 0:
+		p.append(vypis)
 			
 
 			
